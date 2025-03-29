@@ -815,6 +815,7 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/DPU820.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/DPU820.xml \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/DPU8__.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/DPU8__.xml \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/DPU9__.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/DPU9__.xml \
+    vendor/xiaomi/vermeer/proprietary/vendor/etc/display/LUT.txt:$(TARGET_COPY_OUT_VENDOR)/etc/display/LUT.txt \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/LUT0.txt:$(TARGET_COPY_OUT_VENDOR)/etc/display/LUT0.txt \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/LUT1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/display/LUT1.txt \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/LUT2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/display/LUT2.txt \
@@ -842,6 +843,7 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/qdcm_calib_data_vtdr6130_amoled_qsync_video_mode_dsi_visionox_panel_with_DSC.json:$(TARGET_COPY_OUT_VENDOR)/etc/display/qdcm_calib_data_vtdr6130_amoled_qsync_video_mode_dsi_visionox_panel_with_DSC.json \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/qdcm_calib_data_vtdr6130_amoled_video_mode_dsi_visionox_panel_with_DSC.json:$(TARGET_COPY_OUT_VENDOR)/etc/display/qdcm_calib_data_vtdr6130_amoled_video_mode_dsi_visionox_panel_with_DSC.json \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/display/thermallevel_to_fps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/thermallevel_to_fps.xml \
+    vendor/xiaomi/vermeer/proprietary/vendor/etc/displayconfig/display_id_4630946738963277955.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946738963277955.xml \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/displayconfig/display_layout_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_layout_configuration.xml \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/dolby/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/dpm_vndr/vendor.dpm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/dpm_vndr/vendor.dpm.conf \
@@ -931,6 +933,7 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vendor.qti.tftp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.tftp.rc \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vendor.sensors.qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.sensors.qti.rc \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vendor.sensors.sscrpcd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.sensors.sscrpcd.rc \
+    vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vendor.xiaomi.modem.qms@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.xiaomi.modem.qms@1.0-service.rc \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/vppservice.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vppservice.rc \
     vendor/xiaomi/vermeer/proprietary/vendor/etc/init/wfdvndservice.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/wfdvndservice.rc \
@@ -1195,6 +1198,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.sensorscalibrate@1.0-impl \
     vendor.qti.hardware.servicetracker@1.2-impl \
     vendor.qti.hardware.soter@1.0-impl \
+    vendor.xiaomi.hardware.displayfeature@1.0-impl \
     vendor.xiaomi.hardware.quickcamera@1.0-impl \
     vulkan.adreno \
     lib-imscommon \
@@ -1313,6 +1317,8 @@ PRODUCT_PACKAGES += \
     libdiag \
     libdigital-dimming \
     libdisp-aba \
+    libdisplayfeature \
+    libdisplayfeatureservice \
     libdisplayqos \
     libdisplayskuutils \
     libdlbdsservice \
@@ -2100,15 +2106,18 @@ PRODUCT_PACKAGES += \
     com.qti.chi.offline \
     com.qti.chi.override \
     consumerir.qcom \
+    displayfeature.default \
     fingerprint.goodix_fod.default \
     vendor.xiaomi.hw.touchfeature@1.0-impl \
     libAF \
     libAncHumanVideoBokehV4 \
     libHISCppAlgos \
+    libMiDispDevManager \
     libMiMotion \
     libMiVideoFilter \
     libTrueSight \
     libXMFaceFocus \
+    libadaptivehdr \
     libaidenoiser \
     libaidenoiserv2 \
     libailab_rawhdr \
@@ -2156,6 +2165,7 @@ PRODUCT_PACKAGES += \
     libceres \
     libchifeature2 \
     libchilog \
+    libcolortempmode \
     libcom.qti.chinodeutils \
     libcom.xiaomi.attribute \
     libcom.xiaomi.debug \
@@ -2169,12 +2179,19 @@ PRODUCT_PACKAGES += \
     libcommonchiutils \
     libcrussp \
     libdeflicker \
+    libdisplaycount \
+    libdisplaylog \
+    libdither \
     libellv \
     libfastmessage \
+    libflatmode \
+    libfpsmonitor \
     libgf_hal \
     libhdr10plus \
     libhdr_stub \
+    libhdrmode \
     libhis_face_tracking \
+    libhistprocess \
     libhme \
     libipebpsstriping \
     libipebpsstriping170 \
@@ -2185,12 +2202,14 @@ PRODUCT_PACKAGES += \
     libmfGhostDetection \
     libmfec \
     libmfido \
+    libmiBrightness \
     libmiClstc \
     libmiSAT \
     libmiSATTranslate \
     libmiSensorCtrl \
     libmiXmlParser \
     libmiZA \
+    libmi_dspp-odm \
     libmi_hdr_raw \
     libmi_llhdr_raw \
     libmi_supernight_raw \
@@ -2248,6 +2267,7 @@ PRODUCT_PACKAGES += \
     libopencv \
     libopencv3a \
     libopestriping \
+    libpaperMode \
     libportrait_repair_qnn \
     libqll \
     libqll10 \
@@ -2258,9 +2278,11 @@ PRODUCT_PACKAGES += \
     libremosaic_wrapper \
     libremosaiclib \
     librfs_warp \
+    librhytheyecare \
     libsdr2hdr \
     libsfeShiftExtrapolation \
     libshadowhook \
+    libsre \
     libstnfc-auth \
     libsupermoon \
     libswregistrationalgo \
@@ -2269,6 +2291,7 @@ PRODUCT_PACKAGES += \
     libtida@1.2 \
     libtouchreport \
     libtouchsensor \
+    libtruetone \
     libubifocus \
     libvideoBokeh \
     libvideoml \
@@ -2385,6 +2408,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.2-service.xml \
     vendor.qti.hardware.vpp@2.0-service.xml \
     vendor.qti.hardware.wifidisplaysession-service.xml \
+    vendor.xiaomi.hardware.displayfeature@1.0-service.xml \
     vendor.xiaomi.hardware.quickcamera@1.0-service.xml \
     vendor.xiaomi.hardware.vcamera.provider.xml \
     vendor.xiaomi.modem.qms.xml \
@@ -2410,6 +2434,7 @@ PRODUCT_PACKAGES += \
     cnd \
     cnss-daemon \
     diag-router \
+    displayfeature \
     dpmQmiMgr \
     dspservice \
     edgnss-daemon \
@@ -2446,6 +2471,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.media.c2@1.0-service \
     vendor.qti.media.c2audio@1.0-service \
     vendor.qti.secure_element@1.2-service \
+    vendor.xiaomi.hardware.displayfeature@1.0-service \
     vendor.xiaomi.hardware.quickcamera@1.0-service \
     vendor.xiaomi.modem.qms@1.0-service \
     ims_rtp_daemon \
